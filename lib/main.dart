@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:getx_project/controller/todo_controller.dart';
 import 'package:getx_project/controller/user_name_controller.dart';
-import 'package:getx_project/routes/app_routes.dart';
-import 'package:getx_project/views/screens/get_un_named_routes/un_named_main_screen.dart';
-import 'package:getx_project/views/screens/reactive_state/name_controller.dart';
-import 'package:getx_project/views/screens/reactive_state/reactive_ui_screen.dart';
-import 'package:getx_project/views/screens/reactive_state/update_name.dart';
+import 'package:getx_project/views/screens/reactive_state/days_screen.dart';
 
 void main() {
   //Get.put(NameController());
-  Get.put(UserNameController());
+  Get.lazyPut(() => UserNameController());
+  Get.put(TodoController());
   runApp(const MyApp());
 }
 
@@ -28,7 +26,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: UpdateName()
+      home: DaysScreen()
+      //UpdateName()
       //ReactiveUiScreen(),
     );
   }
